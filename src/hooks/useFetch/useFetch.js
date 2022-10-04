@@ -4,7 +4,7 @@ import auth from '@react-native-firebase/auth';
 import axios from 'axios';
 import md5 from 'md5';
 
-const useFetch = (col, comsId) => {
+const useFetch = (col, comsId = '') => {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState([]);
@@ -18,22 +18,18 @@ const useFetch = (col, comsId) => {
     const ts = new Date().getTime();
     const stringToHash = ts + privatekey + publickey;
     const hash = md5(stringToHash);
+
     const url =
       baseUrl +
-      'characters?limit=50&ts=' +
+      col +
+      comsId +
+      '?limit=50&ts=' +
       ts +
       '&apikey=' +
       publickey +
       '&hash=' +
       hash;
-    const url2 =
-      baseUrl +
-      'comics?limit=50&ts=' +
-      ts +
-      '&apikey=' +
-      publickey +
-      '&hash=' +
-      hash;
+
     switch (col) {
       case 'user':
         firestore()
@@ -52,7 +48,7 @@ const useFetch = (col, comsId) => {
           });
         break;
 
-      case 'character':
+      case 'characters':
         axios
           .get(url)
           .then(responseData => {
@@ -69,7 +65,7 @@ const useFetch = (col, comsId) => {
 
       case 'comics':
         axios
-          .get(url2)
+          .get(url)
           .then(responseData => {
             const myData = responseData.data.data.results;
             setData(myData);

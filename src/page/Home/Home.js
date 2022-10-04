@@ -4,16 +4,15 @@ import styles from './Home.style';
 
 import Button from '../../components/Button';
 import useFetch from '../../hooks/useFetch';
-import ComicCard from '../../components/card/ComicCard';
-import CharacterCard from '../../components/card/CharacterCard';
+import HomeCard from '../../components/card/HomeCard';
 
-const Home = () => {
+const Home = ({navigation}) => {
   const [selection, setSelection] = React.useState(true);
   const {
     loading: charLoading,
     error: charError,
     data: charData,
-  } = useFetch('character');
+  } = useFetch('characters');
 
   const {
     loading: comLoading,
@@ -21,8 +20,7 @@ const Home = () => {
     data: comData,
   } = useFetch('comics');
 
-  const renderComic = ({item}) => <ComicCard data={item} />;
-  const renderCharacter = ({item}) => <CharacterCard data={item} />;
+  const renderCharacter = ({item}) => <HomeCard navigation={navigation} data={item} title={selection ? "Karakter İsmi:" : "Çizgi Roman İsmi:"} />;
 
   const toggleSelection = () => {
     setSelection(!selection);
@@ -49,11 +47,7 @@ const Home = () => {
         </View>
       </View>
       <View style={styles.body_container}>
-        {selection ? (
-          <FlatList numColumns={2} data={charData} renderItem={renderCharacter} />
-        ) : (
-          <FlatList numColumns={2} data={comData} renderItem={renderComic} />
-        )}
+          <FlatList numColumns={2} data={selection ? charData : comData} renderItem={renderCharacter} />
       </View>
     </View>
   );

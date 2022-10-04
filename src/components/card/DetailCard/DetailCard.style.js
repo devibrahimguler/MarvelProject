@@ -9,22 +9,20 @@ export default StyleSheet.create({
     flex: 1,
     margin: margins.container,
     padding: paddings.container,
-    borderWidth: borderwidths.container,
-    borderRadius: borderradiuses.container,
-    borderColor: "gray",
     shadowColor: "gray",
     shadowOpacity: 1,
-    shadowRadius: 2
+    shadowRadius: 2,
+    width: 220,
   },
   image: {
-    height: 300,
-    width: '100%',
+    height: 270,
+    width: 200,
     borderRadius: 10,
   },
   title: {
     fontSize: 10,
     fontWeight: 'bold',
-    marginTop: 7,
+    marginVertical: 10,
   },
   car_name: {
     fontSize: 20,

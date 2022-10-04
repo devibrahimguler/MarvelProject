@@ -67,7 +67,8 @@ const HomeStack = () => {
         headerTitle: "Çizgi Roman Detay",
       }}/>
       <Stack.Screen name="CharacterDetailPage" component={CharacterDetail} options={{
-        headerTitle: "Karakter Detay",
+        headerShown: false,
+        presentation: "formSheet"
       }}/>
     </Stack.Navigator>
   );
