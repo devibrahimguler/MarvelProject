@@ -35,43 +35,48 @@ const base_style= StyleSheet.create({
 export default StyleSheet.create({
     ...base_style,
     inner_container: {
-        justifyContent: "space-around"
+        height: 250,
+        justifyContent: "center"
     },
     body_container: {
-        flex: 1,
+        marginTop: 20,
+        marginStart: 10,
         justifyContent: "center",
     },
-    body_inner_container: {
-        flexDirection: "row",
-        justifyContent: "space-around",
-        borderBottomWidth: 1,
-        borderTopWidth: 1,
+    edit_container: {
+        paddingTop:80,
+        borderBottomWidth : 1,
+        paddingBottom: 10,
     },
     back_image: {
         ...base_style.image,
+        height: 150,
         position: "absolute",
         width: "90%",
-    },
-    body_sparator_paylasim: {
-        ...base_style.body_sparator,
-        borderEndWidth: 1
-    },
-    body_sparator_favori: {
-        ...base_style.body_sparator,
-        borderStartWidth: 1
     },
     title: {
         ...base_style.username,
         fontSize: 18,
-        marginHorizontal: margins.titleHorizontal,
-        marginVertical: margins.titleVertical,
+        marginStart: 10,
         color: colors.text
     },
     sub_title: {
         ...base_style.username,
-        fontSize: 15,
-        marginHorizontal: margins.titleHorizontal,
-        marginVertical: margins.titleVertical,
+        textAlign: "left",
+        fontWeight: "bold",
+        fontSize: 14,
+        marginStart: 10,
+    },
+    sub_name: {
+        ...base_style.username,
+        textAlign: "left",
+        fontSize: 18,
+        marginStart: 50,
+    },
+    url: {
+        textAlign: "left",
+        fontSize: 12,
+        marginStart: 50,
     },
 
 });

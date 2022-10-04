@@ -5,9 +5,11 @@ import styles from './HomeCard.style';
 import GenerateImageUrl from '../../../utilities/GenerateImageUrl';
 
 const HomeCard = ({navigation, data, title}) => {
+
   const toDetailPage = () => {
-    navigation.navigate("CharacterDetailPage", data,{image: GenerateImageUrl(data)});
+    navigation.navigate("DetailPage", {data});
   }
+  
   return (
     <TouchableOpacity style={styles.container} onPress={toDetailPage}>
       <Image style={styles.image} source={{uri: GenerateImageUrl(data)}} />

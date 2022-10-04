@@ -10,8 +10,7 @@ import Register from './page/Register';
 import Profile from './page/Profile';
 import EditProfile from './page/EditProfile';
 import Home from './page/Home';
-import ComicDetail from './page/ComicDetail';
-import CharacterDetail from './page/CharacterDetail';
+import Detail from './page/Detail';
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -63,10 +62,7 @@ const HomeStack = () => {
       <Stack.Screen name="HomePage" component={Home} options={{
         headerTitle: "MarvelProject",
       }}/>
-      <Stack.Screen name="ComicDetailPage" component={ComicDetail} options={{
-        headerTitle: "Çizgi Roman Detay",
-      }}/>
-      <Stack.Screen name="CharacterDetailPage" component={CharacterDetail} options={{
+      <Stack.Screen name="DetailPage" component={Detail} options={{
         headerShown: false,
         presentation: "formSheet"
       }}/>

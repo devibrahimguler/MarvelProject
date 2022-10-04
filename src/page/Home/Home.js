@@ -8,6 +8,7 @@ import HomeCard from '../../components/card/HomeCard';
 
 const Home = ({navigation}) => {
   const [selection, setSelection] = React.useState(true);
+
   const {
     loading: charLoading,
     error: charError,
@@ -19,8 +20,14 @@ const Home = ({navigation}) => {
     error: comError,
     data: comData,
   } = useFetch('comics');
-
-  const renderCharacter = ({item}) => <HomeCard navigation={navigation} data={item} title={selection ? "Karakter İsmi:" : "Çizgi Roman İsmi:"} />;
+  
+  const renderCharacter = ({item}) => (
+    <HomeCard
+      navigation={navigation}
+      data={item}
+      title={selection ? 'Karakter İsmi:' : 'Çizgi Roman İsmi:'}
+    />
+  );
 
   const toggleSelection = () => {
     setSelection(!selection);
@@ -47,7 +54,11 @@ const Home = ({navigation}) => {
         </View>
       </View>
       <View style={styles.body_container}>
-          <FlatList numColumns={2} data={selection ? charData : comData} renderItem={renderCharacter} />
+        <FlatList
+          numColumns={2}
+          data={selection ? charData : comData}
+          renderItem={renderCharacter}
+        />
       </View>
     </View>
   );

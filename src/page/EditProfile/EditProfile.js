@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {View, Image, TouchableOpacity} from 'react-native';
+import {View, Image, TouchableOpacity, Alert} from 'react-native';
 import styles from './EditProfile.style';
 import {Formik} from 'formik';
 import {launchImageLibrary} from 'react-native-image-picker';
@@ -33,12 +33,11 @@ const EditProfile = ({navigation, route}) => {
       setImgUrl(pathToFile);
     }
   };
-  const toLogOut = () => {
-    auth()
+  const toLogOut = async () => {
+    await auth()
       .signOut()
-      .then(() => {
-        navigation.navigate('EntryScreen');
-      });
+      navigation.navigate('EntryScreen');
+      navigation.goBack();
   };
 
   const addImage = async (username, pathToFile) => {

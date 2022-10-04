@@ -4,17 +4,22 @@ import styles from './FlatListCard.style';
 
 import DetailCard from '../DetailCard';
 
-const FlatListCard = ({data,title,col}) => {
-
-  const renderCard = ({item}) => <DetailCard data={item} col={col} />;
+const FlatListCard = ({navigation, data, title, col, row, desctription}) => {
+  const renderCard = ({item}) => <DetailCard navigation={navigation} data={item} col={col} row={row} />;
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>{title}</Text>
-      <FlatList
-        horizontal={true}
-        data={data}
-        renderItem={renderCard}
-      />
+      {data.available == 0 ? (
+        <Text>{desctription}</Text>
+      ) : (
+        <>
+          <Text style={styles.title}>{title}</Text>
+          <FlatList
+            horizontal={true}
+            data={data.items}
+            renderItem={renderCard}
+          />
+        </>
+      )}
     </View>
   );
 };

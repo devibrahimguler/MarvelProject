@@ -29,8 +29,71 @@ const Register = ({navigation}) => {
             var object = {
               imageUrl:
                 'https://firebasestorage.googleapis.com/v0/b/marvelproject-69494.appspot.com/o/user%2Fdefault.png?alt=media&token=920e5ee0-e1cd-4077-8be3-de42ac0422b1',
+                backUrl:
+                'https://firebasestorage.googleapis.com/v0/b/marvelproject-69494.appspot.com/o/user%2Fdefault.png?alt=media&token=920e5ee0-e1cd-4077-8be3-de42ac0422b1',
               username: value.usermail.split('@')[0],
-              favorite: '',
+              favorite: {
+                id: 0,
+                name: 'string',
+                description: 'string',
+                modified: new Date(),
+                resourceURI: 'string',
+                urls: [
+                  {
+                    type: 'string',
+                    url: 'string',
+                  },
+                ],
+                thumbnail: {
+                  path: 'string',
+                  extension: 'string',
+                },
+                comics: {
+                  available: 0,
+                  returned: 0,
+                  collectionURI: 'string',
+                  items: [
+                    {
+                      resourceURI: 'string',
+                      name: 'string',
+                    },
+                  ],
+                },
+                stories: {
+                  available: 0,
+                  returned: 0,
+                  collectionURI: 'string',
+                  items: [
+                    {
+                      resourceURI: 'string',
+                      name: 'string',
+                      type: 'string',
+                    },
+                  ],
+                },
+                events: {
+                  available: 0,
+                  returned: 0,
+                  collectionURI: 'string',
+                  items: [
+                    {
+                      resourceURI: 'string',
+                      name: 'string',
+                    },
+                  ],
+                },
+                series: {
+                  available: 0,
+                  returned: 0,
+                  collectionURI: 'string',
+                  items: [
+                    {
+                      resourceURI: 'string',
+                      name: 'string',
+                    },
+                  ],
+                },
+              },
             };
 
             firestore()

@@ -1,6 +1,6 @@
 import {StyleSheet} from 'react-native';
 
-export default StyleSheet.create({
+const base_style = StyleSheet.create({
   container: {
     backgroundColor: "white",
   },
@@ -20,5 +20,18 @@ export default StyleSheet.create({
     textAlign: "center",
     fontSize: 20,
     fontWeight: 'bold',
+  },
+  icon: {
+    position: "absolute",
+    top: 200,
+    start: 12,
+  }
+});
+
+export default StyleSheet.create({
+  ...base_style,
+  image_comics: {
+    ...base_style.image,
+    borderBottomRightRadius: 300,
   },
 });
