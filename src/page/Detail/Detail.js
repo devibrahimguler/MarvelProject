@@ -17,6 +17,7 @@ import GenerateImageUrl from '../../utilities/GenerateImageUrl';
 
 import useFetch from '../../hooks/useFetch';
 import BasicCard from '../../components/card/BasicCard';
+import FlatListCard from '../../components/card/FlatListCard';
 
 const Detail = ({navigation, route}) => {
   const {

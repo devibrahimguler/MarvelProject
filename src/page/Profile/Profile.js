@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useCallback} from 'react';
 import {
   SafeAreaView,
   View,
@@ -6,6 +6,9 @@ import {
   Text,
   ActivityIndicator,
   ScrollView,
+  Linking,
+  Alert,
+  TouchableOpacity,
 } from 'react-native';
 import styles from './Profile.style';
 
@@ -23,6 +26,15 @@ const Profile = ({navigation}) => {
 
   const toEditProfile = () => {
     navigation.navigate('EditProfilePage', userData);
+  };
+
+  const toWebUrl = async url => {
+    const supported = await Linking.canOpenURL(url);
+    if (supported) {
+      await Linking.openURL(url);
+    } else {
+      Alert.alert('Hata', 'Web adresine ulaşılamadı!');
+    }
   };
 
   return (
@@ -62,38 +74,33 @@ const Profile = ({navigation}) => {
                       {userData.favorite.name}
                     </Text>
                   </View>
-                  <View>
+                  { userData.favorite.description &&
+                    <View>
                     <Text style={styles.sub_title}>Karakter Açıklama: </Text>
                     <Text style={styles.sub_name}>
                       {userData.favorite.description}
                     </Text>
                   </View>
+                  }
                   {userData.favorite.urls[0].url && (
-                    <View>
-                      <Text style={styles.sub_title}>Detay Url: </Text>
-                      <Text style={styles.url}>
-                        {userData.favorite.urls[0].url}
-                      </Text>
-                    </View>
+                    <TouchableOpacity
+                      onPress={() => toWebUrl(userData.favorite.urls[0].url)}>
+                      <Text style={styles.url}>Karakter Detay Link</Text>
+                    </TouchableOpacity>
                   )}
                   {userData.favorite.urls[1].url && (
-                    <View>
-                      <Text style={styles.sub_title}>Wikipedia Url: </Text>
-                      <Text style={styles.url}>
-                        {userData.favorite.urls[1].url}
-                      </Text>
-                    </View>
+                    <TouchableOpacity
+                      onPress={() => toWebUrl(userData.favorite.urls[1].url)}>
+                      <Text style={styles.url}>Wikipedia Link</Text>
+                    </TouchableOpacity>
                   )}
                   {userData.favorite.urls[2].url && (
-                    <View>
-                      <Text style={styles.sub_title}>Çizgi Roman Url: </Text>
-                      <Text style={styles.url}>
-                        {userData.favorite.urls[2].url}
-                      </Text>
-                    </View>
+                    <TouchableOpacity
+                      onPress={() => toWebUrl(userData.favorite.urls[2].url)}>
+                      <Text style={styles.url}>Çizgi Roman Link</Text>
+                    </TouchableOpacity>
                   )}
-                  
-                  
+                  <BasicCard navigation={navigation} data={userData.favorite} />
                 </View>
               </>
             )}

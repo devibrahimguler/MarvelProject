@@ -75,8 +75,10 @@ export default StyleSheet.create({
     },
     url: {
         textAlign: "left",
-        fontSize: 12,
-        marginStart: 50,
+        fontSize: 15,
+        marginStart: 10,
+        marginTop: 10,
+        color: "blue"
     },
 
 });
